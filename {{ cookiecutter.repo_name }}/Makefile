@@ -30,7 +30,7 @@ endif
 
 ## Make Dataset
 data: requirements
-	$(PYTHON_INTERPRETER) src/data/make_dataset.py data/raw data/processed
+	$(PYTHON_INTERPRETER) scripts/data/make_dataset.py data/raw data/processed
 
 ## Delete all compiled Python files
 clean:
@@ -43,11 +43,11 @@ lint:
 
 ## Upload Data to researchdrive bucket
 sync_data_to_cloud:
-	rclone copy data RD: --config=rclone.conf
+	rclone copy data RD: --config=.rclone.conf
 
 ## Download Data from researchdrive bucket
 sync_data_from_cloud:
-	clone copy RD: data --config=rclone.conf
+	clone copy RD: data --config=.rclone.conf
 
 ## Set up python interpreter environment
 create_environment:
@@ -69,7 +69,7 @@ endif
 
 ## Test python environment is setup correctly
 test_environment:
-	$(PYTHON_INTERPRETER) test_environment.py
+	$(PYTHON_INTERPRETER) .test_environment.py
 
 #################################################################################
 # PROJECT RULES                                                                 #
